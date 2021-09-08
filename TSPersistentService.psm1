@@ -281,26 +281,7 @@ function Get-ImagePath($string) {
             $string = $string.Replace("LOCALHOST\c$","C:")
         }
         # Resolve CMD variables 
-        $string = $string.Replace("%ALLUSERSPROFILE%\","$env:ALLUSERSPROFILE\")
-        $string = $string.Replace("%APPDATA%\","$env:APPDATA\")
-        $string = $string.Replace("%COMMONPROGRAMFILES%\","$env:COMMONPROGRAMFILES\")
-        $string = $string.Replace("%COMMONPROGRAMFILES(x86)%\","${env:CommonProgramFiles(x86)}\")
-        $string = $string.Replace("%COMSPEC%\","$env:ComSpec\")
-        $string = $string.Replace("%HOMEDRIVE%\","$env:HOMEDRIVE\")
-        $string = $string.Replace("%HOMEPATH%\","$env:HOMEPATH\")
-        $string = $string.Replace("%LOCALAPPDATA%\","$env:LOCALAPPDATA\")
-        $string = $string.Replace("%LOCALAPPDATA%\","$env:LOCALAPPDATA\")
-        $string = $string.Replace("%programdata%\","$env:ProgramData\")
-        $string = $string.Replace("%programfiles%\","$env:ProgramFiles\")
-        $string = $string.Replace("%programfiles(x86)%\","${env:ProgramFiles(x86)}\")
-        $string = $string.Replace("%PUBLIC%\","$env:PUBLIC\")
-        $string = $string.Replace("%systemdrive%\","$env:SystemDrive\")
-        $string = $string.Replace("%systemroot%\","$env:SystemRoot\")
-        $string = $string.Replace("%systemdirectory%\","$env:SystemRoot\System32\")
-        $string = $string.Replace("%TEMP%\","$env:TEMP\")
-        $string = $string.Replace("%TMP%\","$env:TMP\")
-        $string = $string.Replace("%USERPROFILE%\","$env:USERPROFILE\")
-        $string = $string.Replace("%windir%\","$env:windir\")
+        $command = [System.Environment]::ExpandEnvironmentVariables($command)
 
         # Remove irrelevant characters
         $string = $string.Replace('"','')
