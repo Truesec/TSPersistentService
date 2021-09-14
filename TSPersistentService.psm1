@@ -281,7 +281,7 @@ function Get-ImagePath($string) {
             $string = $string.Replace("LOCALHOST\c$","C:")
         }
         # Resolve CMD variables 
-        $command = [System.Environment]::ExpandEnvironmentVariables($command)
+        $string = [System.Environment]::ExpandEnvironmentVariables($string)
 
         # Remove irrelevant characters
         $string = $string.Replace('"','')
